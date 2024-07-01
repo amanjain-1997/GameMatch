@@ -22,7 +22,7 @@ body {
     width: 100px;
 }
 
-.score, .clock {
+.score, .clock, .timelimit {
     font-size: 20px;
     margin: 10px 0;
 }
