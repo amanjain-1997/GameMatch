@@ -18,6 +18,7 @@ const suitEntities = {
 let score = 0;
 let right = 0;
 let wrong =0;
+let flips=0;
 let elapsedTime = 0; // Time elapsed in seconds
 let timerInterval;
 let currentStackIndex = 4; // Start with the left-top most stack of "4 of hearts"
@@ -74,6 +75,7 @@ function getQueryParams() {
 }
 
 function flipCard(card) {
+    flips+=1;
     card.classList.toggle('purple');
     addTime(5);
 }
@@ -185,6 +187,7 @@ function logGameOver() {
 
     const data = {
         uniqueId:uniqueId,
+        flips:flips,
         round:2,
         score: score,
         right: right,
