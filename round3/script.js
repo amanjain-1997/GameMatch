@@ -77,7 +77,7 @@ function getQueryParams() {
 function flipCard(card) {
     flips+=1;
     card.classList.toggle('purple');
-    addTime(5);
+    addTime(2);
 }
 
 function addTime(seconds) {
