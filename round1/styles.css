@@ -132,7 +132,7 @@ body {
     text-align: center;
 }
 
-#score, #time {
+#score, #time, #timelimit {
     margin-bottom: 10px;
     font-size: 18px;
 }
