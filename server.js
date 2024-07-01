@@ -46,19 +46,20 @@ app.use('/round3', express.static(path.join(__dirname, 'round3')));
 
 // Endpoint to handle data submissions
 app.post('/submit', async (req, res) => {
-    console.log("in here")
-    const { key, ...data } = req.body;
-    const result = await collection.insertOne(
-      { _id: new ObjectId() },
-      { $set: req.body },
-      { upsert: true }
-  );
-  console.log(result)
+    const data = req.body;
+    console.log(data);
 
-    const { value } = req.body;
-    console.log(`Data received: ${data}`);
+    // Merge the new ObjectId with the incoming data
+    const document = { _id: new ObjectId(), ...data };
+    try {
+      const result = await collection.insertOne(document);
+      console.log(result);
+      res.status(201).send(result);
+  } catch (error) {
+      console.error(error);
+      res.status(500).send(error);
+  }
     console.log(`Data received: ${JSON.stringify(req.body)}`);
-    res.status(200).json({ message: 'Data received successfully!' });
 });
 
 app.listen(port, () => {
